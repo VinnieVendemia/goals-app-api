@@ -76,3 +76,11 @@ definitions:
     properties:
       message:
         type: string
+  Goal:
+    type: object
+    properties:
+      title:
+        type: string
+        description: task object name
+    required:
+      - title
