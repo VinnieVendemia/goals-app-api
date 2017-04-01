@@ -33,6 +33,25 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+    post:
+      description: add a new goal to the list
+      # goal info to be stored
+      parameters:
+        - name: title
+          description: Goal description
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/Goal"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
   /swagger:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
