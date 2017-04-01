@@ -84,3 +84,15 @@ definitions:
         description: task object name
     required:
       - title
+  GeneralResponse:
+    type: object
+    properties:
+      success:
+        type: number
+        description: returns 1 if successful
+      description:
+        type: string
+        description: a short comment 
+    required:
+      - success
+      - description
