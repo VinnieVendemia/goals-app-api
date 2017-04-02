@@ -52,6 +52,26 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+  /goals/{id}:
+    # our controller name
+    x-swagger-router-controller: goal
+    get:
+      description: get a goal
+      # define the type of response for Success "200" and Error
+      parameters:
+        - name: id
+          type: string
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetGoalResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
   /swagger:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
@@ -60,7 +80,7 @@ definitions:
     required:
       - goals
     properties:
-      # The array of movies
+      # The array of goals
       goals:
         type: array
         items: 
@@ -75,6 +95,15 @@ definitions:
       - message
     properties:
       message:
+        type: string
+  GetGoalResponse:
+    required:
+      - id
+      - title
+    properties:
+      id:
+        type: string
+      title: 
         type: string
   Goal:
     type: object
