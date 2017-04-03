@@ -20,8 +20,9 @@ produces:
 paths:
   /goals:
     # our controller name
-    x-swagger-router-controller: goals
+    x-swagger-router-controller: goal
     get:
+      operationId: getAll
       description: get the goals list
       # define the type of response for Success "200" and Error
       responses:
@@ -34,6 +35,7 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
     post:
+      operationId: save
       description: add a new goal to the list
       # goal info to be stored
       parameters:
@@ -56,6 +58,7 @@ paths:
     # our controller name
     x-swagger-router-controller: goal
     get:
+      operationId: getOne
       description: get a goal
       # define the type of response for Success "200" and Error
       parameters:
@@ -73,6 +76,7 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
     put:
+      operationId: update
       description: update a goal
       # define the parameters
       parameters:
@@ -97,6 +101,7 @@ paths:
           schema:
             $ref: "#/definitions/ErrorResponse"
     delete:
+      operationId: delGoal
       description: delete a goal
       # define the parameters
       parameters:
