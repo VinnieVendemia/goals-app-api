@@ -2,6 +2,8 @@
 //Include crypto to generate the goal id
 var crypto = require('crypto');
 
+var client = require('mariasql');
+
 module.exports = function() {
     return {
         goalList : [],
