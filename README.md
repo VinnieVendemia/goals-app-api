@@ -26,6 +26,8 @@ $ swagger project edit
 
 # TODOs 
 
-Add web-token auth.  Possible [tutorial](https://scotch.io/tutorials/authenticate-a-node-js-api-with-json-web-tokens) to follow.
+- Add web-token auth.  Possible [tutorial](https://scotch.io/tutorials/authenticate-a-node-js-api-with-json-web-tokens) to follow.
 
-Swap crypto in-memory database for SQL db. 
+- Swap crypto in-memory database for SQL db. 
+
+- Update interface
