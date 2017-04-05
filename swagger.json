@@ -1,0 +1,238 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "0.0.1",
+    "title": "Goals App Api"
+  },
+  "host": "localhost:10010",
+  "basePath": "/",
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/goals": {
+      "get": {
+        "operationId": "getAll",
+        "description": "get the goals list",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetGoalsListResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      },
+      "post": {
+        "operationId": "save",
+        "description": "add a new goal to the list",
+        "parameters": [
+          {
+            "name": "title",
+            "description": "Goal description",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Goal"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GeneralResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/goals/{id}": {
+      "get": {
+        "operationId": "getOne",
+        "description": "get a goal",
+        "parameters": [
+          {
+            "name": "id",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GetGoalResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      },
+      "put": {
+        "operationId": "update",
+        "description": "update a goal",
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Goal id",
+            "type": "string",
+            "in": "path",
+            "required": true
+          },
+          {
+            "name": "title",
+            "description": "Goal properties",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Goal"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GeneralResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      },
+      "delete": {
+        "operationId": "delGoal",
+        "description": "delete a goal",
+        "parameters": [
+          {
+            "name": "id",
+            "description": "Goal id",
+            "type": "string",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "$ref": "#/definitions/GeneralResponse"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/swagger": {}
+  },
+  "definitions": {
+    "GetGoalsListResponse": {
+      "required": [
+        "goals"
+      ],
+      "properties": {
+        "goals": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "ErrorResponse": {
+      "required": [
+        "message"
+      ],
+      "properties": {
+        "message": {
+          "type": "string"
+        }
+      }
+    },
+    "GetGoalResponse": {
+      "required": [
+        "id",
+        "title"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      }
+    },
+    "Goal": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string",
+          "description": "task object name"
+        }
+      },
+      "required": [
+        "title"
+      ]
+    },
+    "GeneralResponse": {
+      "type": "object",
+      "properties": {
+        "success": {
+          "type": "number",
+          "description": "returns 1 if successful"
+        },
+        "description": {
+          "type": "string",
+          "description": "a short comment"
+        }
+      },
+      "required": [
+        "success",
+        "description"
+      ]
+    }
+  }
+}
