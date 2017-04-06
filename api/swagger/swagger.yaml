@@ -1,7 +1,7 @@
 swagger: "2.0"
 info:
   version: "1.0.0"
-  title: Goals App Api
+  title: "Goals App Api"
 # during dev, should point to your local machine
 host: localhost:10010
 # basePath prefixes all resource paths 
@@ -119,7 +119,7 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
-  /swagger:
+  /api-docs:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
 definitions:
