@@ -55,17 +55,18 @@ module.exports = function() {
 
         /*
          * Delete a goal with the given id.
+         * TODO: Return 0 if ID does match any 
+         * goals and 1 if item was deleted
          */
         remove(id) {
-            var found = 0;
-            this.goalList = this.goalList.filter(element => {
-                    if(element.id === id) {
-                        found = 1;
-                    }else {
-                        return element.id !== id;
-                    }
-                });
-            return found;           
+          dbClient.query("DELETE FROM goals where id = :id",
+            { id: id },
+            function(err, rows) {
+              if (err)
+                throw err;
+            }
+          );
+          return 1;
         },
         /*
          * Update a goal with the given id
