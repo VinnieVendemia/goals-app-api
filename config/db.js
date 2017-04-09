@@ -1,6 +1,4 @@
 'use strict;'
-//Include crypto to generate the goal id
-var crypto = require('crypto');
 
 var client = require('mariasql');
 
