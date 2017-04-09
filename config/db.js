@@ -37,10 +37,19 @@ module.exports = function() {
                 return this.goalList.find(element => {
                         return element.id === id;
                     }); 
-            }else {
-                return this.goalList;
             }
         },
+
+        findAll(cb) {
+          dbClient.query("SELECT * FROM goals",
+            function(err, rows) {
+                if (err)
+                  throw err;
+              return cb(rows);
+            }
+          );
+        },
+
         /*
          * Delete a goal with the given id.
          */
