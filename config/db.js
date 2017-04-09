@@ -69,17 +69,18 @@ module.exports = function() {
         },
         /*
          * Update a goal with the given id
+         * TODO: Return 0 or 1 depending on 
+         * whether or not a goal is updated
          */
         update(id, goal) {
-            var goalIndex = this.goalList.findIndex(element => {
-                return element.id === id;
-            });
-            if(goalIndex !== -1) {
-                this.goalList[goalIndex].title = goal.title;
-                return 1;
-            }else {
-                return 0;
+          dbClient.query("UPDATE goals SET title=:title where id=:id",
+            { id: id, title: goal['title'] },
+            function(err, rows) {
+                if (err)
+                  throw err;
             }
+          );
+          return 1;
         }       
     }
 };  
