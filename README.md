@@ -24,6 +24,25 @@ And to launch the swagger editing interface:
 $ swagger project edit
 ```
 
+### Configuration 
+
+This application uses a file `config/env.json` locally to configure the DB/etc.  Setup your file as below: 
+
+```json
+{
+  "dev": {
+    "db": {
+      "host": "localhost",
+      "user": "REDACTED",
+      "password": "REDACTED",
+      "db": "goalsappdev"
+    }
+  },
+  "prod": {
+  }
+}
+```
+
 # TODOs 
 
 - Add web-token auth.  Possible [tutorial](https://scotch.io/tutorials/authenticate-a-node-js-api-with-json-web-tokens) to follow.
