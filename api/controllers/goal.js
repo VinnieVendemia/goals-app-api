@@ -8,7 +8,11 @@ module.exports = {getAll, save, getOne, update, delGoal};
 
 //GET /goal operationId
 function getAll(req, res, next) {
-  res.json({ goals: db.find()});
+  var resp = db.findAll(
+    function(data) {
+      res.json({ goals: data});
+    }
+  );  
 }
 //POST /goal operationId
 function save(req, res, next) {
