@@ -30,14 +30,17 @@ module.exports = function() {
           return 1;
         },
         /*
-         * Retrieve a goal with a given id or return all the goals if the id is undefined.
+         * Retrieve a goal with a given id 
          */
-        find(id) {
-            if(id) {
-                return this.goalList.find(element => {
-                        return element.id === id;
-                    }); 
+        find(id, cb) {
+            dbClient.query("SELECT * FROM goals where id = :id",
+            { id: id },
+            function(err, rows) {
+                if (err)
+                  throw err;
+              return cb(rows);
             }
+          );
         },
 
         findAll(cb) {
