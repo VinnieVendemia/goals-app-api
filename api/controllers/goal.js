@@ -21,12 +21,9 @@ function save(req, res, next) {
 //GET /goal/{id} operationId
 function getOne(req, res, next) {
     var id = req.swagger.params.id.value; //req.swagger contains the path parameters
-    var goal = db.find(id);
-    if(goal) {
-        res.json(goal);
-    }else {
-        res.status(204).send();
-    }       
+    db.find(id, function(data){
+        res.json(data);
+    });
 }
 //PUT /goal/{id} operationId
 function update(req, res, next) {
