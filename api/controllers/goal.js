@@ -29,12 +29,7 @@ function getOne(req, res, next) {
 function update(req, res, next) {
     var id = req.swagger.params.id.value; //req.swagger contains the path parameters
     var goal = req.body;
-    if(db.update(id, goal)){
-        res.json({success: 1, description: "goal updated!"});
-    }else{
-        res.status(204).send();
-    }
-
+    res.json({success: db.update(id, goal), description: "goal UPDATED"});
 }
 //DELETE /goal/{id} operationId
 function delGoal(req, res, next) {
