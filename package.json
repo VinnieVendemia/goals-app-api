@@ -10,6 +10,7 @@
   "dependencies": {
     "crypto": "0.0.3",
     "express": "^4.12.3",
+    "fs-extra": "^2.1.2",
     "swagger-express-mw": "^0.1.0",
     "swagger-jsdoc": "^1.9.2",
     "swagger-tools": "^0.10.1"
