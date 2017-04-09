@@ -1,4 +1,6 @@
 'use strict';
+
+var logger   = global.logger.addLogger('[GOAL]');
 // Include our "db"
 var db = require('../../config/db')();
 // Exports all the functions to perform on the db
