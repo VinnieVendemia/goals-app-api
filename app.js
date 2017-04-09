@@ -5,6 +5,11 @@ var SwaggerUi = require('swagger-tools/middleware/swagger-ui');
 var app = require('express')();
 module.exports = app; // for testing
 
+var env = process.env.NODE_ENV || 'dev';
+global.env = env;
+
+global.logger = require('./config/logger');
+
 var config = {
   appRoot: __dirname // required config
 };
