@@ -19,9 +19,15 @@ module.exports = function() {
          * Save the goal inside the "db".
          */
         save(goal) {
-            goal.id = crypto.randomBytes(20).toString('hex'); // fast enough for our purpose
-            this.goalList.push(goal);
-            return 1;           
+          dbClient.query("INSERT INTO goals (title) VALUES (:title)",
+            { title: goal['title'] },
+            function(err, rows) {
+              if (err)
+                throw err;
+                console.dir(rows);
+            }
+          );
+          return 1;
         },
         /*
          * Retrieve a goal with a given id or return all the goals if the id is undefined.
