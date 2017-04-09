@@ -34,10 +34,5 @@ function update(req, res, next) {
 //DELETE /goal/{id} operationId
 function delGoal(req, res, next) {
     var id = req.swagger.params.id.value; //req.swagger contains the path parameters
-    if(db.remove(id)){
-        res.json({success: 1, description: "goal deleted!"});
-    }else{
-        res.status(204).send();
-    }
-
+    res.json({success: db.remove(id), description: "goal deleted!"});
 }
