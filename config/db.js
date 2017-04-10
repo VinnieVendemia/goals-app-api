@@ -14,7 +14,6 @@ var dbClient = new Client({
 
 module.exports = function() {
     return {
-        goalList : [],
         /*
          * Save the goal inside the "db".
          */
