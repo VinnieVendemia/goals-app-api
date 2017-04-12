@@ -6,7 +6,8 @@
 var logger   = global.logger.addLogger('[DB]');
 var fse  = require('fs-extra');
 var Client = require('mariasql');
-var dbConfig = require('./configFactory')().fetchDbConfig();
+var ConfigFactory = require('../api/classes/ConfigFactory');
+var dbConfig = new ConfigFactory().fetchDbConfig();
 
 var dbClient = new Client({
   host: dbConfig['host'],
