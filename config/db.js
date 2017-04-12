@@ -32,6 +32,21 @@ module.exports = function() {
           return 1;
         },
         /*
+         * Save a user inside the "db".
+         * TODO: Modify query, shorten length or replace with query generator 
+         */
+        saveUser(user) {
+          dbClient.query("INSERT INTO users (username, password, admin) VALUES (:username, :password, :admin)",
+            { username: user['username'], password: user['password'], admin: user['admin'] },
+            function(err, rows) {
+              if (err)
+                throw err;
+                console.dir(rows);
+            }
+          );
+          return 1;
+        },
+        /*
          * Retrieve a goal with a given id 
          */
         find(id, cb) {
