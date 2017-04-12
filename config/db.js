@@ -1,3 +1,6 @@
+// TODO: Modify structure of DB code, make more modular 
+// TODO: Add wrapper/protection around SQL queries, should not be making raw queries 
+// TODO: ADMIN Levels that offer different levels of restriction 
 'use strict;'
 
 var logger   = global.logger.addLogger('[DB]');
