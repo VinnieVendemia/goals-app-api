@@ -43,8 +43,8 @@ paths:
       description: add a new user to the list
       # goal info to be stored
       parameters:
-        - name: username
-          description: Username of user
+        - name: user
+          description: Create a new user
           in: body
           required: true
           schema:
@@ -189,6 +189,8 @@ definitions:
               type: string
             password:
               type: string
+            admin:
+              type: string
   GetGoalsListResponse:
     required:
       - goals
@@ -235,9 +237,13 @@ definitions:
       password:
         type: string
         description: task object name
+      admin:
+        type: string
+        description: task object name
     required:
       - username
       - password
+      - admin
   GeneralResponse:
     type: object
     properties:
