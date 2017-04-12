@@ -70,6 +70,16 @@ module.exports = function() {
           );
         },
 
+        findAllUsers(cb) {
+          dbClient.query("SELECT * FROM users",
+            function(err, rows) {
+                if (err)
+                  throw err;
+              return cb(rows);
+            }
+          );
+        },
+
         /*
          * Delete a goal with the given id.
          * TODO: Return 0 if ID does match any 
