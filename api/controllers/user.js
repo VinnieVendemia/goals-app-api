@@ -4,13 +4,16 @@ var db = require('../../config/db')();
 // Exports all the functions to perform on the db
 module.exports = {getAll, save};
 
-//GET /goal operationId
+//GET /user
 function getAll(req, res, next) {
-	res.json([{ username: "NONE", password: "NONE"}]);
+  db.findAllUsers(
+    function(data) {
+      res.json({ users: data});
+    }
+  );  
 }
 
-//POST /goal operationId
+//POST /user 
 function save(req, res, next) {
-	res.json({ success: true});
-    // res.json({success: db.save(req.body), description: "User added to the list!"});
+    res.json({success: db.saveUser(req.body), description: "user added to the list!"});
 }
