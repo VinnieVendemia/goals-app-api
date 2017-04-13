@@ -6,9 +6,12 @@ var db = require('../../config/db')();
 // Exports all the functions to perform on the db
 module.exports = {getAll, save, getOne, update, delGoal};
 
+var Goal = require('../classes/Goal');
+var goal = new Goal();
+
 //GET /goal operationId
 function getAll(req, res, next) {
-  db.findAll(
+  goal.findAll(
     function(data) {
       res.json({ goals: data});
     }
@@ -21,7 +24,7 @@ function save(req, res, next) {
 //GET /goal/{id} operationId
 function getOne(req, res, next) {
     var id = req.swagger.params.id.value; //req.swagger contains the path parameters
-    db.find(id, function(data){
+    goal.find(id, function(data){
         res.json(data);
     });
 }
