@@ -18,23 +18,23 @@ class Db {
     }
 
     insertQuery (columns, values) {
-        `INSERT INTO ${this.table} (${columns}) VALUES (${values})`
+        return `INSERT INTO ${this.table} (${columns}) VALUES (${values})`
     }
 
-    selectByKey (key, value) {
-        `SELECT * FROM ${this.table} where ${key} = ${value}`
+    selectByKeyQuery (key, value) {
+        return `SELECT * FROM ${this.table} where ${key} = ${value}`
     }
 
     selectAllQuery () {
-        `SELECT * FROM ${this.table}`
+        return `SELECT * FROM ${this.table}`
     }
 
     deleteQuery(key, value)  {
-        `DELETE FROM ${this.table} where ${key} = #{value}`
+        return `DELETE FROM ${this.table} where ${key} = #{value}`
     }
 
     updateQuery (key, value) {
-        `UPDATE ${this.table} SET title=:title where ${key} = ${value}`
+        return `UPDATE ${this.table} SET title=:title where ${key} = ${value}`
     }
 
     // TODO: Loop through array of values and format as: 
