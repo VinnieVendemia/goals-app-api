@@ -33,6 +33,7 @@ class Db {
         return `DELETE FROM ${this.table} where ${key} = #{value}`
     }
 
+    // TODO: Fix 
     updateQuery (key, value) {
         return `UPDATE ${this.table} SET title=:title where ${key} = ${value}`
     }
