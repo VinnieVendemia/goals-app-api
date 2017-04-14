@@ -22,6 +22,11 @@ class Goal extends Db {
         var query = super.insertQuery('title', ':title')
         super.performQuery(query, data, cb);
     }
+
+    remove(id, cb)  {
+        var query = super.deleteQuery('id', id)
+        super.performQuery(query, {id: id}, cb);
+    }
 }
 
 module.exports = Goal;
