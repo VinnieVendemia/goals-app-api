@@ -30,7 +30,7 @@ class Db {
     }
 
     deleteQuery(key, value)  {
-        return `DELETE FROM ${this.table} where ${key} = #{value}`
+        return `DELETE FROM ${this.table} where ${key} = ${value}`
     }
 
     // TODO: Fix 
