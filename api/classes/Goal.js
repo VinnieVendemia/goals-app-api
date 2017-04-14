@@ -3,6 +3,7 @@ var Db = require('./Db');
 
 class Goal extends Db {
 
+
     constructor() {
         super('goals');
     }
@@ -17,6 +18,10 @@ class Goal extends Db {
         super.performQuery(query, {id: id}, cb);
     }
 
+    save(data, cb) {
+        var query = super.insertQuery('title', ':title')
+        super.performQuery(query, data, cb);
+    }
 }
 
 module.exports = Goal;
