@@ -19,7 +19,11 @@ function getAll(req, res, next) {
 }
 //POST /goal operationId
 function save(req, res, next) {
-    res.json({success: db.save(req.body), description: "goal added to the list!"});
+    goal.save(req.body, 
+        function(data) {
+            res.json({success: 1, description: "goal added to the list!"})
+        }
+    )
 }
 //GET /goal/{id} operationId
 function getOne(req, res, next) {
