@@ -58,6 +58,29 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+  /users/{id}:
+    # our controller name
+    x-swagger-router-controller: user
+    get:
+      tags: 
+        - users
+      operationId: getOne
+      description: get a user
+      # define the type of response for Success "200" and Error
+      parameters:
+        - name: id
+          type: string
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetUserResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
   /goals:
     # our controller name
     x-swagger-router-controller: goal
@@ -219,6 +242,18 @@ definitions:
       id:
         type: string
       title: 
+        type: string
+  GetUserResponse:
+    required:
+      - id
+      - username
+      - admin
+    properties:
+      id:
+        type: string
+      username: 
+        type: string
+      admin:
         type: string
   Goal:
     type: object
