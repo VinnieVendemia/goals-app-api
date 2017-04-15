@@ -1,7 +1,7 @@
 'use strict';
 
 // Exports all the functions to perform on the db
-module.exports = {getAll, save, getOne, update};
+module.exports = {getAll, save, getOne, update, delUser};
 
 var User = require('../classes/User');
 var user = new User();
@@ -39,6 +39,16 @@ function update(req, res, next) {
     user.update(id, req.body, 
         function(data) {
             res.json({success: 1, description: "user UPDATED"})
+        }
+    )
+}
+
+//DELETE /goal/{id} operationId
+function delUser(req, res, next) {
+    var id = req.swagger.params.id.value; //req.swagger contains the path parameters
+    user.remove(id, 
+        function(data) {
+            res.json({success: 1, description: "user deleted!"})
         }
     )
 }
