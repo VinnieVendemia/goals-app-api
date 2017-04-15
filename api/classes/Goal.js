@@ -27,6 +27,12 @@ class Goal extends Db {
         var query = super.deleteQuery('id', id)
         super.performQuery(query, {id: id}, cb);
     }
+
+    update(id, data, cb) {
+        var keyToUpdate = Object.keys(data)[0];
+        var query = super.updateQuery(keyToUpdate, 'id', id)
+        super.performQuery(query, data, cb)
+    }
 }
 
 module.exports = Goal;
