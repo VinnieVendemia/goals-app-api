@@ -1,7 +1,7 @@
 'use strict';
 
 // Exports all the functions to perform on the db
-module.exports = {getAll, save, getOne};
+module.exports = {getAll, save, getOne, update};
 
 var User = require('../classes/User');
 var user = new User();
@@ -31,4 +31,14 @@ function getOne(req, res, next) {
         delete data[0]['password']
         res.json(data);
     });
+}
+
+//PUT /user/{id} operationId
+function update(req, res, next) {
+    var id = req.swagger.params.id.value; //req.swagger contains the path parameters
+    user.update(id, req.body, 
+        function(data) {
+            res.json({success: 1, description: "user UPDATED"})
+        }
+    )
 }
