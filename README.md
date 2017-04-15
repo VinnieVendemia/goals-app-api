@@ -48,3 +48,5 @@ This application uses a file `config/env.json` locally to configure the DB/etc. 
 - Add web-token auth.  Possible [tutorial](https://scotch.io/tutorials/authenticate-a-node-js-api-with-json-web-tokens) to follow.
 
 - Update interface
+
+- Add [unit-tests](https://github.com/substack/tape)
