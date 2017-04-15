@@ -33,14 +33,8 @@ class Db {
         return `DELETE FROM ${this.table} where ${key} = ${value}`
     }
 
-    // TODO: Fix 
-    updateQuery (key, value) {
-        return `UPDATE ${this.table} SET title=:title where ${key} = ${value}`
-    }
-
-    // TODO: Loop through array of values and format as: 
-    // [ :username, :password, :admin ]
-    generateValuesForQuery (values) {   
+    updateQuery (updateKey, searchKey, searchValue) {
+        return `UPDATE ${this.table} SET ${updateKey}=:${updateKey} where ${searchKey} = ${searchValue}`
     }
 
     performQuery (query, values, cb) {
