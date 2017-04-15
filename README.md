@@ -47,6 +47,4 @@ This application uses a file `config/env.json` locally to configure the DB/etc. 
 
 - Add web-token auth.  Possible [tutorial](https://scotch.io/tutorials/authenticate-a-node-js-api-with-json-web-tokens) to follow.
 
-- Swap crypto in-memory database for SQL db. 
-
 - Update interface
