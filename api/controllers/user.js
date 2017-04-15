@@ -1,7 +1,7 @@
 'use strict';
 
 // Exports all the functions to perform on the db
-module.exports = {getAll, save};
+module.exports = {getAll, save, getOne};
 
 var User = require('../classes/User');
 var user = new User();
@@ -22,4 +22,12 @@ function save(req, res, next) {
           res.json({success: 1, description: "User added to the list!"})
       }
   )
+}
+
+//GET /user/{id} operationId
+function getOne(req, res, next) {
+    var id = req.swagger.params.id.value; //req.swagger contains the path parameters
+    user.find(id, function(data){
+        res.json(data);
+    });
 }
