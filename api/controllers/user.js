@@ -18,5 +18,9 @@ function getAll(req, res, next) {
 
 //POST /user 
 function save(req, res, next) {
-    res.json({success: db.saveUser(req.body), description: "user added to the list!"});
+  user.save(req.body, 
+      function(data) {
+          res.json({success: 1, description: "User added to the list!"})
+      }
+  )
 }
