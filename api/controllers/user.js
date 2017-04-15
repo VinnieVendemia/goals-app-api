@@ -4,9 +4,12 @@ var db = require('../../config/db')();
 // Exports all the functions to perform on the db
 module.exports = {getAll, save};
 
+var User = require('../classes/User');
+var user = new User();
+
 //GET /user
 function getAll(req, res, next) {
-  db.findAllUsers(
+  user.findAll(
     function(data) {
       res.json({ users: data});
     }
