@@ -108,6 +108,27 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+    delete:
+      tags: 
+        - users
+      operationId: delUser
+      description: delete a user
+      # define the parameters
+      parameters:
+        - name: id
+          description: User id
+          type: string
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
   /goals:
     # our controller name
     x-swagger-router-controller: goal
