@@ -28,6 +28,7 @@ function save(req, res, next) {
 function getOne(req, res, next) {
     var id = req.swagger.params.id.value; //req.swagger contains the path parameters
     user.find(id, function(data){
+        delete data[0]['password']
         res.json(data);
     });
 }
