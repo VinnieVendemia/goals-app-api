@@ -21,6 +21,16 @@ class User extends Db {
         var query = super.selectByKeyQuery('id', id);
         super.performQuery(query, {id: id}, cb);
     }
+
+    update(id, data, cb) {
+        var keyToUpdate = Object.keys(data)[0];
+        if (typeof keyToUpdate != 'undefined') {
+            var query = super.updateQuery(keyToUpdate, 'id', id)
+            super.performQuery(query, data, cb)
+        } else {
+            cb();
+        }
+    }
 }
 
 module.exports = User;
