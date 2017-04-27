@@ -20,7 +20,8 @@
   "devDependencies": {
     "mariasql": "^0.2.6",
     "should": "^7.1.0",
-    "supertest": "^1.0.0"
+    "supertest": "^1.0.0",
+    "tape": "^4.6.3"
   },
   "scripts": {
     "start": "node app.js",
