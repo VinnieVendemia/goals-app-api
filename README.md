@@ -43,6 +43,15 @@ This application uses a file `config/env.json` locally to configure the DB/etc. 
 }
 ```
 
+
+### Unit Tests 
+
+This application uses [tape](https://github.com/substack/tape) to run unit-tests found in the `tests` directory.  To run the tests: 
+
+```
+$ tape tests/**/*.js | node_modules/.bin/tap-spec
+```
+
 # TODOs 
 
 - Add web-token auth.  Possible [tutorial](https://scotch.io/tutorials/authenticate-a-node-js-api-with-json-web-tokens) to follow.
