@@ -9,3 +9,12 @@ test('init test', function (t) {
    t.ok(db, 'db should be OK');
    t.end();
 });
+
+test('insert query test', function (t) {
+   var db = new Db('test_table');
+
+   var insertQuery = db.insertQuery('title', 'test_title')
+   t.equal(insertQuery, 'INSERT INTO test_table (title) VALUES (test_title)')
+
+   t.end();
+});
