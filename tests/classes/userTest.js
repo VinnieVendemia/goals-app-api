@@ -13,8 +13,8 @@ test('init test', function (t) {
 test('insert query test', function (t) {
    var user = new User();
 
-   var insertQuery = user.insertQuery('title', 'test_title')
-   t.equal(insertQuery, 'INSERT INTO users (title) VALUES (test_title)')
+   var insertQuery = user.insertQuery('username, password, admin', 'test user, test password, test admin')
+   t.equal(insertQuery, 'INSERT INTO users (username, password, admin) VALUES (test user, test password, test admin)')
 
    t.end();
 });
@@ -49,8 +49,8 @@ test('deleteQuery query test', function (t) {
 test('updateQuery query test', function (t) {
    var user = new User();
 
-   var query = user.updateQuery('title', 'id', 1)
-   t.equal(query, 'UPDATE users SET title=:title where id = 1')
+   var query = user.updateQuery('username', 'id', 1)
+   t.equal(query, 'UPDATE users SET username=:username where id = 1')
 
    t.end();
 });
