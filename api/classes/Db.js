@@ -21,6 +21,10 @@ class Db {
         return `INSERT INTO ${this.table} (${columns}) VALUES (${values})`
     }
 
+    insertWithDupQuery (columns, values, colToUpdate, valToUpdate) {
+        return insertQuery(columns, values) + ` ON DUPLICATE KEY update ${colToUpdate}=${valToUpdate}`;
+    }
+
     selectByKeyQuery (key, value) {
         return `SELECT * FROM ${this.table} where ${key} = ${value}`
     }
