@@ -23,6 +23,11 @@ class Progress extends Db {
         super.performQuery(query, data, cb);
     }
 
+    remove(id, cb)  {
+        var query = super.deleteQuery('id', id)
+        super.performQuery(query, {id: id}, cb);
+    }
+
 }
 
 module.exports = Progress;
