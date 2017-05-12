@@ -303,6 +303,27 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+    delete:
+      tags: 
+        - progress
+      operationId: delProgress
+      description: delete a progress item
+      # define the parameters
+      parameters:
+        - name: id
+          description: Progress id
+          type: string
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
   /api-docs:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
