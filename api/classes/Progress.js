@@ -13,6 +13,11 @@ class Progress extends Db {
         super.performQuery(query, {}, cb);
     }
 
+    findAllByGoal(goal_id, cb) {
+        var query = super.selectByKeyQuery('goal_id', goal_id);
+        super.performQuery(query, {goal_id: goal_id}, cb);
+    }
+
     save(data, cb) {
         var query = super.insertWithDupQuery ('description, scale, date, goal_id', ':description, :scale, :date, :goal_id', 'scale', ':scale')
         super.performQuery(query, data, cb);
