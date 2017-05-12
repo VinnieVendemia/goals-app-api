@@ -258,6 +258,28 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+    post:
+      tags: 
+        - progress
+      operationId: save
+      description: add a new progress to the list
+      # progress info to be stored
+      parameters:
+        - name: progress
+          description: Create a new progress
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/Progress"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GeneralResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
   /api-docs:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
@@ -365,6 +387,25 @@ definitions:
       - username
       - password
       - admin
+  Progress:
+    type: object
+    properties:
+      description:
+        type: string
+        description: task object name
+      scale:
+        type: string
+        description: task object name
+      date:
+        type: string
+        description: task object name
+      goal_id:
+        type: string
+        description: task object name
+    required:
+      - scale
+      - date
+      - goal_id
   UserUpdate:
     type: object
     properties:
