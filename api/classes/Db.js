@@ -22,7 +22,7 @@ class Db {
     }
 
     insertWithDupQuery (columns, values, colToUpdate, valToUpdate) {
-        return insertQuery(columns, values) + ` ON DUPLICATE KEY update ${colToUpdate}=${valToUpdate}`;
+        return this.insertQuery(columns, values) + ` ON DUPLICATE KEY update ${colToUpdate}=${valToUpdate}`;
     }
 
     selectByKeyQuery (key, value) {
