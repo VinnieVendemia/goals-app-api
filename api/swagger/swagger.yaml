@@ -327,15 +327,16 @@ definitions:
           type: object
           properties:
             id:
-              type: string
+              type: integer
             description:
               type: string
             scale: 
-              type: string 
+              type: integer 
             date:
               type: string
+              format: date
             goal_id:
-                type: string
+                type: integer
   ErrorResponse:
     required:
       - message
@@ -394,13 +395,14 @@ definitions:
         type: string
         description: task object name
       scale:
-        type: string
+        type: integer
         description: task object name
       date:
         type: string
+        format: date
         description: task object name
       goal_id:
-        type: string
+        type: integer
         description: task object name
     required:
       - scale
