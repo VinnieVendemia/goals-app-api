@@ -280,6 +280,29 @@ paths:
           description: Error
           schema:
             $ref: "#/definitions/ErrorResponse"
+  /progress/{id}:
+    # our controller name
+    x-swagger-router-controller: progress
+    get:
+      tags: 
+        - progress
+      operationId: getProgressByGoal
+      description: get a list of progress by goal_id
+      # define the type of response for Success "200" and Error
+      parameters:
+        - name: id
+          type: string
+          in: path
+          required: true
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/GetProgressListResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
   /api-docs:
     x-swagger-pipe: swagger_raw
 # complex objects have schema definitions
@@ -327,16 +350,16 @@ definitions:
           type: object
           properties:
             id:
-              type: integer
+              type: string
             description:
               type: string
             scale: 
-              type: integer 
+              type: string 
             date:
               type: string
               format: date
             goal_id:
-                type: integer
+                type: string
   ErrorResponse:
     required:
       - message
