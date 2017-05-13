@@ -19,7 +19,7 @@ class Progress extends Db {
     }
 
     save(data, cb) {
-        var query = super.insertWithDupQuery ('description, scale, date, goal_id', ':description, :scale, :date, :goal_id', 'scale', ':scale')
+        var query = super.insertQuery ('description, scale, date, goal_id', ':description, :scale, :date, :goal_id')
         super.performQuery(query, data, cb);
     }
 
