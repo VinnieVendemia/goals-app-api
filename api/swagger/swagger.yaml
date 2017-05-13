@@ -378,7 +378,6 @@ definitions:
               type: string 
             date:
               type: string
-              format: date
             goal_id:
                 type: string
   ErrorResponse:
@@ -443,7 +442,6 @@ definitions:
         description: task object name
       date:
         type: string
-        format: date
         description: task object name
       goal_id:
         type: integer
