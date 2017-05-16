@@ -19,7 +19,7 @@ class Goal extends Db {
     }
 
     save(data, cb) {
-        var query = super.insertQuery('title', ':title')
+        var query = super.insertQuery('title, description', ':title, :description')
         super.performQuery(query, data, cb);
     }
 
@@ -30,8 +30,12 @@ class Goal extends Db {
 
     update(id, data, cb) {
         var keyToUpdate = Object.keys(data)[0];
-        var query = super.updateQuery(keyToUpdate, 'id', id)
-        super.performQuery(query, data, cb)
+        if (typeof keyToUpdate != 'undefined') {
+            var query = super.updateQuery(keyToUpdate, 'id', id)
+            super.performQuery(query, data, cb)
+        } else {
+            cb();
+        }
     }
 }
 
