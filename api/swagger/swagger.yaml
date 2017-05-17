@@ -154,7 +154,7 @@ paths:
       description: add a new goal to the list
       # goal info to be stored
       parameters:
-        - name: title
+        - name: goal
           description: Goal description
           in: body
           required: true
@@ -204,12 +204,12 @@ paths:
           type: string
           in: path
           required: true
-        - name: title
+        - name: user
           description: Goal properties
           in: body
-          required: true
+          required: false
           schema:
-            $ref: "#/definitions/Goal"
+            $ref: "#/definitions/GoalUpdate"
       responses:
         "200":
           description: Success
@@ -360,6 +360,8 @@ definitions:
               type: string
             title:
               type: string
+            description:
+              type: string
   GetProgressListResponse:
     required:
         - progress
@@ -413,6 +415,9 @@ definitions:
       title:
         type: string
         description: task object name
+      description:
+        type: string
+        description: task object name
     required:
       - title
   User:
@@ -460,6 +465,15 @@ definitions:
         type: string
         description: task object name
       admin:
+        type: string
+        description: task object name
+  GoalUpdate:
+    type: object
+    properties:
+      title:
+        type: string
+        description: task object name
+      description:
         type: string
         description: task object name
   GeneralResponse:
