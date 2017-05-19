@@ -6,7 +6,9 @@ var app = require('express')();
 module.exports = app; // for testing
 
 var env = process.env.NODE_ENV || 'dev';
+var debug = process.env.DEBUG || false;
 global.env = env;
+global.debug = debug;
 
 global.logger = require('./config/logger');
 
