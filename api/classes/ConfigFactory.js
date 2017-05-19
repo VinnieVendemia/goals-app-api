@@ -13,7 +13,6 @@ class ConfigFactory {
 			if(this.debug === 'true') {
 				return JSON.parse(fse.readFileSync('config/env.json', 'utf8'))[env]['db'];
 			} else {
-				console.dir('DB_HOST: ' + process.env.DB_HOST)
 				 return {
 			      "host": process.env.DB_HOST,
 			      "user": process.env.DB_USER,
