@@ -34,3 +34,5 @@ node_modules
 config/runtime.yaml
 
 config/env.json
+npm-debug.log
+.DS_Store
