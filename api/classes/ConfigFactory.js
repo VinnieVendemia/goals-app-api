@@ -6,10 +6,11 @@ class ConfigFactory {
 
     constructor () {
         this.env = global.env;
+        this.debug = global.debug;
     }
 
     fetchDbConfig() {
-			if(this.env === 'dev') {
+			if(this.debug === 'true') {
 				return JSON.parse(fse.readFileSync('config/env.json', 'utf8'))[env]['db'];
 			} else {
 				// TODO
