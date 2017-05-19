@@ -10,11 +10,17 @@ var goal = new Goal();
 
 //GET /goal operationId
 function getAll(req, res, next) {
-  goal.findAll(
-    function(data) {
-      res.json({ goals: data});
+  logger.info('Calling getAll function of goal controller')
+    try {
+        throw 'MY ERROR'
+      goal.findAll(
+        function(data) {
+          res.json({ goals: data});
+        }
+      );
+    } catch (e) {
+        logger.info('Caught ' + e)
     }
-  );  
 }
 //POST /goal operationId
 function save(req, res, next) {
