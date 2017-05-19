@@ -13,7 +13,12 @@ class ConfigFactory {
 			if(this.debug === 'true') {
 				return JSON.parse(fse.readFileSync('config/env.json', 'utf8'))[env]['db'];
 			} else {
-				// TODO
+				 return {
+			      "host": process.env.DB_HOST,
+			      "user": process.env.DB_USER,
+			      "password": process.env.DB_PASS,
+			      "db": process.env.DB
+			    }
 			}
 		}		
 }
