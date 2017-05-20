@@ -24,6 +24,18 @@ And to launch the swagger editing interface:
 $ swagger project edit
 ```
 
+Use the DEBUG flag when running locally.  This will update a few configurations to allow the app to run
+
+```
+$ DEBUG=true swagger project start
+```
+
+You can also specify the NODE_ENV if you want to test against a production/staging database.
+
+```
+$ NODE_ENV=true DEBUG=true swagger project start
+```
+
 ### Configuration 
 
 This application uses a file `config/env.json` locally to configure the DB/etc.  Setup your file as below: 
@@ -52,10 +64,12 @@ This application uses [tape](https://github.com/substack/tape) to run unit-tests
 $ tape tests/**/*.js | node_modules/.bin/tap-spec
 ```
 
+### Deploys 
+
+Deploys are currently handled in heroku.  Once a feature has been pushed to master, use the build feature on [heroku](https://dashboard.heroku.com/apps/goals-app-api/deploy/github) to complete the deploy process.
+
 # TODOs 
 
 - Add web-token auth.  Possible [tutorial](https://scotch.io/tutorials/authenticate-a-node-js-api-with-json-web-tokens) to follow.
 
-- Update interface
-
-- Add [unit-tests](https://github.com/substack/tape)
+- Add staging deploy environment
