@@ -1,10 +1,11 @@
 'use strict';
 
 // Exports all the functions to perform on the db
-module.exports = {getAll, save, getOne, update, delUser};
+module.exports = {getAll, save, getOne, update, delUser, authUser};
 
 var User = require('../classes/User');
 var user = new User();
+var jwt    = require('jsonwebtoken');
 
 //GET /user
 function getAll(req, res, next) {
@@ -51,4 +52,28 @@ function delUser(req, res, next) {
             res.json({success: 1, description: "user deleted!"})
         }
     )
+}
+
+function authUser(req, res, next) {
+  user.validate(req.body, 
+    function(data) {
+      if(data[0] === undefined) {
+        res.json({
+          success: false,
+          message: "Failed to Authenticate USER"
+        })
+       } else {
+        var userToSign = {username: data['username'], password: data['password']}
+        var token = jwt.sign(userToSign, 'FJ1w2N83VJxoH42r9Zmt', {
+          expiresIn: 60 * 60 * 24 // expires in 24 hours
+        })
+
+        res.json({
+          success: true,
+          message: "Success",
+          token: token
+        })
+       }
+    }
+  )
 }
