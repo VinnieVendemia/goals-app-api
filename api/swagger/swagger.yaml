@@ -48,6 +48,12 @@ paths:
         - users
       operationId: getAll
       description: get the user list
+      parameters:
+        - name: token
+          in: header
+          description: token to be passed as a header
+          required: true
+          type: string
       # define the type of response for Success "200" and Error
       responses:
         "200":
