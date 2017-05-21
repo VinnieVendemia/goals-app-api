@@ -3,6 +3,8 @@
 var SwaggerExpress = require('swagger-express-mw');
 var SwaggerUi = require('swagger-tools/middleware/swagger-ui');
 var app = require('express')();
+var morgan = require('morgan');
+
 module.exports = app; // for testing
 
 var env = process.env.NODE_ENV || 'dev';
@@ -34,6 +36,7 @@ var config = {
 SwaggerExpress.create(config, function(err, swaggerExpress) {
   if (err) { throw err; }
 
+  app.use(morgan(global.env))
 
   app.use(SwaggerUi(swaggerExpress.runner.swagger));
   // install middleware
