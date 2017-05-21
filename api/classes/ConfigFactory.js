@@ -20,7 +20,15 @@ class ConfigFactory {
 			      "db": process.env.DB
 			    }
 			}
-		}		
+		}
+
+		fetchSecretKey() {
+			if(this.debug === 'true') {
+				return JSON.parse(fse.readFileSync('config/env.json', 'utf8'))[env]['jwt_secret_key']
+			} else {
+				return process.env.JWT_SECRET_KEY
+			}
+		}
 }
 
 module.exports = ConfigFactory
