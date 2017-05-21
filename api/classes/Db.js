@@ -29,6 +29,10 @@ class Db {
         return `SELECT * FROM ${this.table} where ${key} = ${value}`
     }
 
+    selectByMultipleKeysQuery(columns, values) {
+        return `SELECT * FROM ${this.table} where (${columns}) = (${values})`
+    }
+
     selectAllQuery () {
         return `SELECT * FROM ${this.table}`
     }
