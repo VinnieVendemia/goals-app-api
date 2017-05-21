@@ -16,6 +16,30 @@ consumes:
 produces:
   - application/json
 paths:
+  /authenticate:
+    x-swagger-router-controller: user
+    post:
+      tags: 
+        - auth
+      operationId: authUser
+      description: validate a username and password
+      # goal info to be stored
+      parameters:
+        - name: auth
+          description: Auth a user
+          in: body
+          required: true
+          schema:
+            $ref: "#/definitions/Auth"
+      responses:
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/AuthResponse"
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/ErrorResponse"
   /users:
     # our controller name
     x-swagger-router-controller: user
@@ -380,6 +404,18 @@ definitions:
               type: string
             goal_id:
                 type: string
+  AuthResponse:
+    type: object
+    properties:
+      success:
+        type: boolean
+      message:
+        type: string
+      token:
+        type: string
+    required:
+      - success
+      - message
   ErrorResponse:
     required:
       - message
@@ -434,6 +470,18 @@ definitions:
       - username
       - password
       - admin
+  Auth:
+    type: object
+    properties:
+      username:
+        type: string
+        description: task object name
+      password:
+        type: string
+        description: task object name
+    required:
+      - username
+      - password
   Progress:
     type: object
     properties:
