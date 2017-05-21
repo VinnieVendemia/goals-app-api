@@ -5,7 +5,10 @@ module.exports = {getAll, save, getOne, update, delUser, authUser};
 
 var User = require('../classes/User');
 var user = new User();
-var jwt    = require('jsonwebtoken');
+var jwt  = require('jsonwebtoken');
+
+var ConfigFactory = require('../classes/ConfigFactory');
+var secret = new ConfigFactory().fetchSecretKey();
 
 //GET /user
 function getAll(req, res, next) {
@@ -64,7 +67,7 @@ function authUser(req, res, next) {
         })
        } else {
         var userToSign = {username: data['username'], password: data['password']}
-        var token = jwt.sign(userToSign, 'FJ1w2N83VJxoH42r9Zmt', {
+        var token = jwt.sign(userToSign, secret, {
           expiresIn: 60 * 60 * 24 // expires in 24 hours
         })
 
