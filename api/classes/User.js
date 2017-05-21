@@ -36,6 +36,11 @@ class User extends Db {
         var query = super.deleteQuery('id', id)
         super.performQuery(query, {id: id}, cb);
     }
+
+    validate(data, cb) {
+        var query = super.selectByMultipleKeysQuery('username, password', ':username, :password')
+        super.performQuery(query, data, cb);
+    }
 }
 
 module.exports = User;
