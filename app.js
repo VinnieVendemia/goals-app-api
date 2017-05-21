@@ -4,6 +4,7 @@ var SwaggerExpress = require('swagger-express-mw');
 var SwaggerUi = require('swagger-tools/middleware/swagger-ui');
 var app = require('express')();
 var morgan = require('morgan');
+var authMiddleware = require('./api/middleware/auth.js')
 
 module.exports = app; // for testing
 
@@ -33,10 +34,14 @@ var config = {
   swagger: swaggerObject
 };
 
+
 SwaggerExpress.create(config, function(err, swaggerExpress) {
   if (err) { throw err; }
 
   app.use(morgan(global.env))
+
+  // app.use('/users', tokenMiddleWare)
+  app.all('*', authMiddleware.tokenMiddleWare);
 
   app.use(SwaggerUi(swaggerExpress.runner.swagger));
   // install middleware
