@@ -186,6 +186,12 @@ paths:
       operationId: getAll
       description: get the goals list
       # define the type of response for Success "200" and Error
+      parameters:
+        - name: token
+          in: header
+          description: token to be passed as a header
+          required: true
+          type: string
       responses:
         "200":
           description: Success
@@ -202,6 +208,11 @@ paths:
       description: add a new goal to the list
       # goal info to be stored
       parameters:
+        - name: token
+          in: header
+          description: token to be passed as a header
+          required: true
+          type: string
         - name: goal
           description: Goal description
           in: body
@@ -227,6 +238,11 @@ paths:
       description: get a goal
       # define the type of response for Success "200" and Error
       parameters:
+        - name: token
+          in: header
+          description: token to be passed as a header
+          required: true
+          type: string
         - name: id
           type: string
           in: path
@@ -247,6 +263,11 @@ paths:
       description: update a goal
       # define the parameters
       parameters:
+        - name: token
+          in: header
+          description: token to be passed as a header
+          required: true
+          type: string
         - name: id
           description: Goal id
           type: string
@@ -274,6 +295,11 @@ paths:
       description: delete a goal
       # define the parameters
       parameters:
+        - name: token
+          in: header
+          description: token to be passed as a header
+          required: true
+          type: string
         - name: id
           description: Goal id
           type: string
