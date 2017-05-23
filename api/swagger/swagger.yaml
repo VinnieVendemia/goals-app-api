@@ -323,6 +323,12 @@ paths:
       operationId: getAll
       description: get all progress items
       # define the type of response for Success "200" and Error
+      parameters:
+        - name: token
+          in: header
+          description: token to be passed as a header
+          required: true
+          type: string
       responses:
         "200":
           description: Success
@@ -339,6 +345,11 @@ paths:
       description: add a new progress to the list
       # progress info to be stored
       parameters:
+        - name: token
+          in: header
+          description: token to be passed as a header
+          required: true
+          type: string
         - name: progress
           description: Create a new progress
           in: body
@@ -364,6 +375,11 @@ paths:
       description: get a list of progress by goal_id
       # define the type of response for Success "200" and Error
       parameters:
+        - name: token
+          in: header
+          description: token to be passed as a header
+          required: true
+          type: string
         - name: id
           type: string
           in: path
@@ -384,6 +400,11 @@ paths:
       description: delete a progress item
       # define the parameters
       parameters:
+        - name: token
+          in: header
+          description: token to be passed as a header
+          required: true
+          type: string
         - name: id
           description: Progress id
           type: string
