@@ -71,6 +71,11 @@ paths:
       description: add a new user to the list
       # goal info to be stored
       parameters:
+        - name: token
+          in: header
+          description: token to be passed as a header
+          required: true
+          type: string
         - name: user
           description: Create a new user
           in: body
