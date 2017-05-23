@@ -101,6 +101,11 @@ paths:
       description: get a user
       # define the type of response for Success "200" and Error
       parameters:
+        - name: token
+          in: header
+          description: token to be passed as a header
+          required: true
+          type: string
         - name: id
           type: string
           in: path
