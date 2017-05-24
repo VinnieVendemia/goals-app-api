@@ -1,5 +1,6 @@
 var test = require('tape');
 global.env = 'dev'
+global.debug = 'true'
 var ConfigFactory = require('../../api/classes/ConfigFactory');
 
 
