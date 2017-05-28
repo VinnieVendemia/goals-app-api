@@ -3,12 +3,24 @@ var ConfigFactory = require('../classes/ConfigFactory');
 
 module.exports.tokenMiddleWare = function (req, res, next) {
 
-  var blacklistEndpoints = ['/goals', '/progress', '/users']
+  // Create a map of endpoints to blacklist
+  // An empty array means all methods are blacklisted
+  // Otherwise, specific methods must be provided 
+  var blacklistEndpoints = { 
+    '/goals': [],
+    '/progress': [],
+    '/users': ['GET', 'PUT', 'DELETE'] // Allow POST of user w/o token
+  }
+
   var blacklistedRequest = false
 
-  for(var i = 0; i < blacklistEndpoints.length; i++) {
-    if( req.path.includes(blacklistEndpoints[i]) ) {
-      blacklistedRequest = true
+  for(var key in blacklistEndpoints) {
+    if( req.path.includes(key) ) {
+      if (blacklistEndpoints[key].length == 0) {
+        blacklistedRequest = true
+      } else if(blacklistEndpoints[key].includes(req.method)) {
+        blacklistedRequest = true
+      }
     }
   }
 
