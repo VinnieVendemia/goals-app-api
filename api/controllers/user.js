@@ -14,7 +14,7 @@ var secret = new ConfigFactory().fetchSecretKey();
 function getAll(req, res, next) {
   user.findAll(
     function(data) {
-      res.json({ users: data});
+      res.json({ users: sanitizeUserData(data)});
     }
   );  
 }
@@ -79,4 +79,12 @@ function authUser(req, res, next) {
        }
     }
   )
+}
+
+function sanitizeUserData(users) {
+  for(var i = 0; i < users.length; i++){
+    var user = users[i]
+    user['password'] = '*******'
+  }
+  return users
 }
