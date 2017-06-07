@@ -14,3 +14,13 @@ test('init test', function (t) {
 
    t.end();
 });
+
+test('fetchSecretKey test', function (t) {
+   var dbConfig = new ConfigFactory();
+   var config = dbConfig.fetchSecretKey();
+
+   t.ok(dbConfig, 'dbConfig should be OK');
+   t.ok(config, 'config should be OK');
+
+   t.end();
+});
